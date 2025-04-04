@@ -23,6 +23,5 @@ class Animal {
 class Fish extends Animal{
     int fins;
     void setFins(int f){
-        this.fins = f;
+       this.fins = f;
     }
-}
