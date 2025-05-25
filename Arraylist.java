@@ -303,14 +303,61 @@ public class Arraylist {
 
 
 
-public static int beautifulArrayList(int n ){
-    ArrayList<Integer>result = new ArrayList<>();
+// solution approach to solve this problem we have analyze a mathamtical rule that if there are three  no and two are even then the average of those no will be even and if two no are odd the the average of the thodse two no wil be even so we have to arrange them in such order so that they manage the rule of the question..
+
+
+
+public static ArrayList<Integer> beautifulArrayList(int n ){
+    ArrayList<Integer>ans = new ArrayList<>();
+
+    ans.add(1);
+
+    for (int i = 2; i <=n ; i++) {
+        ArrayList<Integer>temp = new ArrayList<>();
+          for(int e : ans){
+            if(2*e-1<=n )temp.add(2*e-1);
+        }
+        for(int e : ans){
+            if(2*e<=n)temp.add(2*e);
+
+        }
+
+  
+        ans = temp;
+    }
+
+
+    return ans;
 
     
 }
 
+
+
+// second approach with divide and conquer
+
+
+public static ArrayList<Integer> beautiful(int n ){
+    ArrayList<Integer>ans =  new ArrayList<>();
+    divideandConq(1,1,ans,n);
+    return ans;
+}
+
+
+public static void divideandConq(int start,int inc , ArrayList<Integer>res,int n){
+      
+    if(start + n >  n){
+        res.add(start);
+        return;
+    }
+     System.out.println(res);
+    divideandConq(start, 2*inc, res, n);
+    divideandConq(start+inc, 2*inc, res, n);
+}
+
     public static void main(String args[]) {
 
+       System.out.println( beautiful(5));
         ArrayList<Integer> height = new ArrayList<>();
         height.add(1);
         height.add(8);
@@ -347,7 +394,7 @@ public static int beautifulArrayList(int n ){
         // ls3.add(3);
 
         // System.out.println(sortedPairSum(ls2, 16));
-        System.out.println(mostFrequentSecond(ls3, 2));
+        // System.out.println(mostFrequentSecond(ls3, 2));
 
         // there are some inbuild function related to arraylist the basic difference
         // between an array and arraylist is to array has fixed length while the
