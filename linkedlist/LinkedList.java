@@ -196,18 +196,97 @@ public class LinkedList {
         head = prev;
     }
 
+
+
+    public static int findAndRemoveNthFromLast(int n){
+      Node prev = head;
+
+
+      if(n > size){
+        return Integer.MIN_VALUE;
+      }
+
+        if(n == size){
+           head = prev.next;
+           return prev.data;
+        }
+    
+        for(int i = 1; i < size - n  ; i++){
+          
+            prev = prev.next;
+        }
+      
+      
+        prev.next = prev.next.next;
+
+        return prev.next.data;
+
+    }
+
+
+    public static Node findMiddle(Node head){
+        Node slow  = head;
+        Node fast = head;
+     
+        while(fast != null && fast.next != null){
+                  slow = slow.next;
+                  fast = fast.next.next;
+               
+        }
+
+        return slow;
+
+    }
+
+
+    public static boolean checkIsllPalindrome(){
+
+        // base case 
+
+        if(head == null || head.next == null){
+            return true;
+        }
+
+
+        // step 2 to find the midd
+
+        Node midNode = findMiddle(head);
+
+        Node prev = null;
+        Node curr = midNode;
+        while (curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right  = prev;
+        Node left = head;
+
+        while (right != null) {
+            
+            if(left.data != right.data){
+                return false;
+            }
+
+            right = right.next;
+            left = left.next;
+        }
+
+        return true;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
       ll.addFirst(1);
       ll.addFirst(2);
       ll.addFirst(3);
-      ll.addFirst(4);
-      ll.addFirst(4);
-      ll.addFirst(4);
-      ll.addFirst(5);
-      ll.printll();
-      ll.reverse();
-      ll.printll();
+      ll.addFirst(2);
+      ll.addFirst(1);
+
+      System.out.println(ll.checkIsllPalindrome());
+       
+
 
     
 
