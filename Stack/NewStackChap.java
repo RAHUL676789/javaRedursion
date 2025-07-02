@@ -140,17 +140,27 @@ public class NewStackChap {
 
     }
 
+
+
+    public static boolean isPalindrome(LinkedList<Character> ls) {
+
+         
+
+        return true;
+    }
+
     public static void main(String[] args) {
-        String s = "({[]})(){}[]";
-        String str = "((a+b))";
-        String str2 = "(a+b) ((c+d))";
-        System.out.println(isDuplicat(str));
-        System.out.println(isDuplicat(str2));
-        int arr[] = { 2, 1, 5, 6, 2, 3 };
-      findNextSmallerRight(arr);
-      findNextSmallerLeft(arr);
-        System.out.println();
-        System.out.println(maxAreaHistoGram(arr));
+       LinkedList <Character> ls = new LinkedList<>();
+       ls.add('a');
+       ls.add('b');
+       ls.add('c');
+       ls.add('b');
+       ls.add('a');
+
+       Character head = ls.getFirst();
+       System.out.println(head);
+
+      
     }
 
 }
